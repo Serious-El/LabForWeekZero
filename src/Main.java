@@ -9,15 +9,27 @@ public class Main {
     public static void main(String[] args) {
         var scan = new Scanner(System.in);
         // Taking the number of rows and columns for each matrix
-       try {
+     
            System.out.println("Enter the number of rows for Matrix A: ");
            int rowA = scan.nextInt();
+            if(rowA < 0){
+               throw new IllegalArgumentException("Enter a positive integer");
+           }
            System.out.println("Enter the number of columns for the matrix A");
            int colA = scan.nextInt();
+            if(colA < 0){
+               throw new IllegalArgumentException("Enter a positive integer");
+           }
            System.out.println("Enter the number of row for matrix B");
            int rowB = scan.nextInt();
+            if(rowB < 0){
+               throw new IllegalArgumentException("Enter a positive integer");
+           }
            System.out.println("Enter the number of columns for the matrix B");
            int colB = scan.nextInt();
+            if(colB < 0){
+               throw new IllegalArgumentException("Enter a positive integer");
+           }
 
            // making sure the dimension is not negative
            if (rowA <= 0 || rowB <= 0 || colA <= 0 || colB <= 0) {
@@ -52,9 +64,6 @@ public class Main {
            }
            int[][] result = matrixMultiplication(matA, matB);
            printMatrix(result);
-       } catch (Exception e) {
-           throw new InputMismatchException("Please your input should be integers only");
-       }
 
 
 
@@ -98,10 +107,11 @@ public class Main {
     private static void printMatrix(int[][] mat){
         //using foreach loop to print the element in the matrix
         for(int[] row: mat){
+            System.out.print("| ")
             for (int element: row){
-                System.out.println("| "+element+" |");
+                System.out.print(String.format("%3d", element) + " ");
             }
-
+             System.out.println("|");   
         }
     }
 
